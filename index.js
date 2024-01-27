@@ -1,6 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
-import ShortUrl  from "./models/shortUrl.js"
+import ShortUrl from "./models/shortUrl.js";
 const app = express(); 
 
 mongoose.connect('mongodb://localhost/urlShortener')
@@ -13,6 +13,16 @@ app.use(express.urlencoded({extended: false}));
 app.get("/", async (req, res) => {
     const shortUrlsData = await ShortUrl.find()
     res.render('index', {shortUrlsData})
+})
+
+app.get("/:shortUrl", async(req, res) => {
+    const shortUrl = await ShortUrl.findOne({ short: req.params.shortUrl })
+    if (shortUrl === null) return res.sendStatus(404) // If no shortUrl exists, return 404 Not found
+    
+    shortUrl.clicks++ //Increments counter
+    shortUrl.save()
+
+    res.redirect(shortUrl.full)
 })
 
 app.post("/shortUrls", async (req, res) => {
