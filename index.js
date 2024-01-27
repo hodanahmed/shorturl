@@ -2,8 +2,10 @@ import express from "express";
 import mongoose from "mongoose";
 import ShortUrl from "./models/shortUrl.js";
 const app = express(); 
+const LOCAL_CONNECTION_URL = 'mongodb://localhost/urlShortener'
 
-mongoose.connect('mongodb://localhost/urlShortener')
+
+mongoose.connect(process.env.PROD_CONNECTION_URL || LOCAL_CONNECTION_URL)
 
 //Middleware
 app.set('view engine', 'ejs')
