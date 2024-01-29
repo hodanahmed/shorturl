@@ -5,7 +5,7 @@ shorturl is a URL shortener web service.
 ## 🚀 Quickstart
 Navigate to [shorturl-89f6.onrender.com](https://shorturl-89f6.onrender.com/) and upload a URL. 
 
-You will see your new short url appended at the end of the table including the full URL and how many times someone has clicked it. 
+You will see your new short url appended at the end of the table including the full URL and how many times it's been clicked. 
 
 ## Installation
 
