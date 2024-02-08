@@ -9,7 +9,7 @@ const shortUrlSchema = new mongoose.Schema({
   short: {
     type: String,
     required: true,
-    default: () => `${HOST_NAME}/` + nanoid(10),
+    default: () => `${HOST_NAME}/` + nanoid(5),
   },
   clicks: {
     type: Number,
